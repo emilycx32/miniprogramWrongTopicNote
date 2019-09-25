@@ -1,0 +1,253 @@
+<form bindsubmit="">
+  <!-- 浏览区域  -->
+  <view class="main">
+    <view class="main-left"></view>
+    <view class="wrong-topic-notes-preview-wrap" style="width: 100%">
+      <image wx:if="{{notBgColorChoose}}" style="width: 50px; height: 50px; position: absolute; right: 16px; top: 15px" mode="aspectFit" src="{{src}}"></image>
+      <view class="wrong-topic-notes-preview-content" style="background-color: {{previewBg}}; border: {{previewBgBorder}}; display: flex">
+        <view class="question-left"></view>
+        <view class="content" style="width: 100%">
+          <view class="preview-title" style="font-size: 14px; margin: 14px 0; color: {{fontColor}}; font-weight: 700">{{title}}</view>
+          <view class="question-wrap" style="width: 100%; {{questionTextTemp=='' && questionImage=='' ? 'border-bottom: 0px solid rgba(0, 0, 0, 0)' : 'border-bottom: 1px solid rgba(0, 0, 0, 0.05)'}} ">
+            <image src="{{questionImage}}" style="width: 100%" hidden="{{questionImageHidden}}" bindtap="questionImagePreview"></image>
+            <view class="{{question-text}}" style="font-size: {{fontSize}}; color: {{fontColor}}; margin: 10px 0; width: 100%; line-height: {{lineHight}}; text-align: {{textAlign}}; word-break:break-all">{{questionText}}</view>
+          </view>
+          <view class="wrong-topic-notes-preview-answer" style="width: 100%; {{answerTextTemp=='' && answerImage=='' ? 'border-bottom: 0px solid rgba(0, 0, 0, 0)' : 'border-bottom: 1px solid rgba(0, 0, 0, 0.05)'}}">
+            <view class="answer-switch" style="display: flex; align-items: center; {{answerTextTemp=='' && answerImage=='' ? 'display: none' : 'display: flex'}}" bindtap="answerSwitchTap">
+              <image src="{{lightImage}}" style="width: 15px; height: 19px;margin-right: 8px"></image>
+              <view style="font-size: 12px; color: {{fontColor}}; font-weight: 700; margin: 10px 0; margin-right: 5px">{{answerSwitch}}</view>
+              <image src="{{switchTriangle}}" style="width: 8px; height: 4px"></image>
+            </view>
+            <image src="{{answerImageP}}" style="width: 100%" hidden="{{answerImagePHidden}}" bindtap="answerImagePreview"></image>
+            <view class="{{answer-text}}" hidden="{{answerTestHidden}}" style="font-size: {{fontSize}}; color: {{fontColor}}; margin: 10px 0; width: 100%; line-height: {{lineHight}}; text-align: {{textAlign}}; word-break:break-all">{{answerText}}</view>
+          </view>
+          <view class="info" style="display: flex; justify-content: space-between; margin: 10px 0 14px 0">
+            <view class="info1" style="display: flex; align-items: center">
+              <view class="date" style="font-size: 12px; color: {{fontColor}};">{{date}}</view>
+              <view class="subject" style="margin-left: 8px;border: 0.5px solid #464646; border-radius: 10px; border-color: {{fontColor}}; font-size: 11px; color: {{fontColor}}; padding: 2px 6px">{{subject}}</view>
+            </view>
+            <view class="info2" style="display: flex; align-items: center; width: 180px; flex-direction: row-reverse; flex-wrap: wrap">
+              <view class="redo-status redo-status-15">
+                <view style="font-size: 11px; color: white">15</view>
+              </view>
+              <view class=" redo-status redo-status-4">
+                <view style="font-size: 11px; color: white">4</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="question-right"></view>
+      </view>
+    </view>
+    <view class="main-right"></view>
+  </view>
+
+  <view class="main-input">
+    <view class="main-left"></view>
+    <view class="input-wrap">
+      <!-- 输入错题标题  -->
+      <view class="title-input-wrap" style="margin-bottom: 40px">
+        <view class="txt {{status1==0 ? 'noactive-fontColor':'active-fontColor'}}">标题</view>
+        <view class="title-input input {{status1==0 ? 'noactive-border':'active-border'}}">
+          <input maxlength="20" name='title' type='text' placeholder="这里是标题" bindinput="titleChange" placeholder-class="{{status1==0 ? 'placeholder':'placeholder-active'}}" bindfocus="focus1" bindblur='blur1' />
+          <view class="title-counter">{{lastArea}}/20</view>
+        </view>
+      </view>
+      <!-- 输入错题内容  -->
+      <view class="content" id="question-content-input" style="margin-bottom: 40px">
+        <view class="txt {{status2==0 ? 'noactive-fontColor':'active-fontColor'}}">错题内容</view>
+        <view class="content-input input {{status2==0 ? 'noactive-border':'active-border'}}">
+          <view style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+            <view class="content-txt" bindtap="inputQuestionText">请输入错题文字内容</view>
+            <image style="width: 40px; height: 40px; margin-right: -6px" src="../../../static/images/camera.png" bindtap="chooseImage"></image>
+          </view>
+          <view class="question-image-upload" hidden="{{questionImageHidden}}">
+            <view class="q-image-upload-wrap">
+              <!-- 图片缩略图  -->
+              <!-- <block wx:if="{{questionImageHidden == false}}" wx:for="{{questionImages}}" wx:key="{{item.id}}" -->
+              <!-- <view class="uploader__file" bindlongpress="deleteQuestionImage" data-index="{{index}}"> -->
+              <!-- <image class="uploader__img" src="{{item.path}}" style="width: 100%"/> -->
+              <!-- </view> -->
+              <!-- </block> -->
+              <image class="q-image" src="{{questionImage}}" bindtap="handleQuestionImagePreview" style="width: 100%"></image>
+            </view>
+          </view>
+          <view class="question-content-text-input">
+            <textarea placeholder="" focus="{{isFocus}}" auto-height maxlength="800" style="line-height:44rpx; color: #464646; padding-bottom: 8px; {{status2==0 && questionTextTemp=='' ? 'display: none' : 'display: block'}}" bindblur="blur2" bindfocus="focus2" bindinput="changeQuestionText"
+            />
+          </view>
+        </view>
+      </view>
+      <!-- 输入错题答案  -->
+      <view class="content" id="answer-content-input" style="margin-bottom: 20px">
+        <view class="txt {{status3==0 ? 'noactive-fontColor':'active-fontColor'}}">答案</view>
+        <view class="content-input input {{status3==0 ? 'noactive-border':'active-border'}}">
+          <view style="display: flex; justify-content: space-between; align-items: center; width: 100%">
+            <view class="content-txt" bindtap="inputAnswerText">请输入答案</view>
+            <image style="width: 40px; height: 40px; margin-right: -6px" src="../../../static/images/camera.png" bindtap="chooseAnswerImage"></image>
+          </view>
+          <view class="answer-image-upload" hidden="{{answerImageHidden}}">
+            <view class="a-image-upload-wrap">
+              <!-- 图片缩略图  -->
+              <image class="a-image" src="{{answerImage}}" bindtap="handleAnswerImagePreview" style="width: 100%"></image>
+            </view>
+          </view>
+          <view class="answer-content-text-input">
+            <textarea placeholder="" focus="{{isFocus2}}" auto-height maxlength="800" style="line-height:44rpx; color: #464646; padding-bottom: 8px; {{status3==0 && answerTextTemp=='' ? 'display: none' : 'display: block'}}" bindblur="blur3" bindfocus="focus3" bindinput="changeAnswerText"
+            />
+          </view>
+        </view>
+      </view>
+      <!-- 选择科目  -->
+      <view class="select-subject-wrap select-wrap" bindtap="selectSubjectTapDialog">
+        <view>科目</view>
+        <view style="display: flex; align-items: center">
+          <view>{{subjectChoose}}</view>
+          <image src="../../../static/images/choose-triangle.png" style="width: 12px; height: 6px; margin-left: 6px"></image>
+        </view>
+      </view>
+      <select-subject-dialog title="选择科目" show="{{selectSubjectDialogShow}}" bindbuttontap="selectSubjectTapDialogButton" buttons="{{selectSubjectButtons}}">
+        <scroll-view scroll-y style="height: 320px; width: 100%; margin: 0 auto;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <view class="scroll-view-item subjects" bindtap="changeSubject">
+            {{subjectN}}
+          </view>
+        </scroll-view>
+        <button class='edit-subjects-button' bindtap="editSubjects">
+          <view>编辑科目</view>
+        </button>
+      </select-subject-dialog>
+      <!-- 添加重做时间  -->
+      <view class="add-time-wrap select-wrap" bindtap="addTimeTapDialog">
+        <view>添加重做时间</view>
+        <view style="display: flex; align-items: center">
+          <view>{{redoTimeChoose}}</view>
+          <image src="../../../static/images/choose-triangle.png" style="width: 12px; height: 6px; margin-left: 6px"></image>
+        </view>
+      </view>
+      <add-time-dialog title="" show="{{addTimeDialogShow}}" bindbuttontap="addTimeTapDialogButton" buttons="{{addTimeButtons}}" class="dialog">
+        <view class="current-date-wrap">
+          <view class="calendar-this-year">{{thisYear}}</view>
+          <view class="calendar-this-date-wrap">{{thisMonth}}月{{thisDate}}日 | {{toDay}}</view>
+        </view>
+        <view class="calendar-current-date-wrap"></view>
+        <calendar binddayClick="dayClick" weeks-type="cn" days-color="{{dayStyle}}" cell-size="40" board-style="calendar-weeks" header-style="calendar-header" bindnextMonth="next" bindprevMonth="prev" />
+      </add-time-dialog>
+    </view>
+    <view class="main-right"></view>
+  </view>
+  <!-- 底部按钮组  -->
+  <view class="footer-wrap {{status4==0 ? 'noshowsetting-bottom':'showsetting-bottom'}}">
+    <view class="main-left"></view>
+    <view class='footer-box'>
+      <view class="cu-bar foot bg-white tabbar border">
+        <view class="style-wrap" bindtap="showBgSetting">
+          <image class='style-bg-btn btn' src='../../../static/images/style-bg-btn.png'></image>
+        </view>
+        <view class="style-wrap" bindtap="showFontSetting">
+          <image class='style-font-btn btn' src='../../../static/images/style-font-btn.png'></image>
+        </view>
+        <view class="style-wrap" bindtap="showAlignSetting">
+          <image class='style-align-btn btn' src='../../../static/images/style-align-btn.png'></image>
+        </view>
+        <view class="style-wrap" bindtap="showColorSetting">
+          <image class='style-color-btn btn' src='../../../static/images/style-color-btn.png'></image>
+        </view>
+        <view class="style-wrap" bindtap="deleteTapDialog">
+          <image class='delete-btn btn' src='../../../static/images/delete-btn.png'></image>
+        </view>
+        <delete-dialog title="删除" show="{{deleteDialogShow}}" bindbuttontap="deleteTapDialogButton" buttons="{{deleteButtons}}">
+          <view class="delelte-dialog-content">
+            确定要删除这道题目吗？
+          </view>
+        </delete-dialog>
+        <view class="bg-black submit-btn btn" bindtap="savePost">保存</view>
+      </view>
+    </view>
+    <view class="main-right"></view>
+  </view>
+  <!-- 遮罩层 -->
+  <view class="mask" wx:if="{{chooseSize}}" bindtap='hideModal'></view>
+  <!-- 上滑高度 -->
+  <view class='choosen' wx:if="{{chooseSize}}" animation='{{animationData}}'>
+    <!-- 内容 -->
+    <view class="container-box">
+      <!-- 选择背景 -->
+      <view wx:if="{{bgChoose}}" class="bg-choose-wrap">
+        <view class="bg-filter">
+          <image wx:if="{{characterChoose}}" class='bg-filter-a' src='../../../static/images/character-style.png'></image>
+          <view wx:if="{{noBgColorChoose}}" class="no-bg-filter-b" bindtap="bgColorChooseTap"></view>
+          <image wx:if="{{noCharacterChoose}}" class='bg-filter-a' src='../../../static/images/no-character-style.png' bindtap="characterChooseTap"></image>
+          <view wx:if="{{bgColorChoose}}" class="bg-filter-b"></view>
+        </view>
+        <scroll-view wx:if="{{characterChoose}}" scroll-y style="height: 242.5px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <radio-group class='character-radios' bindchange="characterRadioChange">
+            <label class="character-radio" bindtap="click" wx:for="{{items}}" wx:key="{{items}}" data-id="{{index}}">
+              <view style="display: flex; justify-content: center">
+                <radio value="{{item.name}}" name="{{item.value}}"></radio>
+                <image class='character-choose-img' src="{{item.value}}"></image>
+              </view>
+            </label>
+          </radio-group>
+        </scroll-view>
+        <scroll-view wx:if="{{bgColorChoose}}" scroll-y style="height: 242.5px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <radio-group class='bg-color-radios' bindchange="bgColorRadioChange">
+            <label class="bg-color-radio" bindtap="click2" wx:for="{{items2}}" wx:key="{{items2}}" data-id="{{index}}">
+              <view style="display: flex; justify-content: center">
+                <radio value="{{item.name}}" name="{{item.value}}"></radio>
+                <view class="bg-choose-block" style="{{item.value}}"></view>
+              </view>
+            </label>
+          </radio-group>
+        </scroll-view>
+      </view>
+      <!-- 选择字体 -->
+      <view wx:if="{{fontChoose}}" class="font-choose-wrap">
+        <view class="fontChooseTitle">
+          字号
+        </view>
+        <scroll-view scroll-y style="height: 248.5px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <radio-group class='font-radios' bindchange="fontRadioChange">
+            <label class="font-radio" bindtap="click3" wx:for="{{items3}}" wx:key="{{items3}}" data-id="{{index}}">
+              <view style="display: flex; justify-content: center">
+                <radio value="{{item.name}}" name="{{item.value}}"></radio>
+                <view class="font-setting">{{item.value}}</view>
+              </view>
+            </label>
+          </radio-group>
+        </scroll-view>
+      </view>
+      <!-- 选择对齐方式 -->
+      <view wx:if="{{alignChoose}}" class="align-choose-wrap">
+        <view class="alignChooseTitle">
+          对齐方式
+        </view>
+        <scroll-view scroll-y style="height: 248.5px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <radio-group class='align-radios' style="display: flex; justify-content: space-around; align-items: center; padding-top: 24px" bindchange="alignRadioChange">
+            <label class="align-radio" bindtap="click4" wx:for="{{items4}}" wx:key="{{items4}}" data-id="{{index}}">
+              <view style="display: flex; justify-content: center">
+                <radio value="{{item.name}}" name="{{item.value}}"></radio>
+                <image class='align-setting' src="{{item.value}}"></image>
+              </view>
+            </label>
+          </radio-group>
+        </scroll-view>
+      </view>
+      <!-- 选择字的颜色 -->
+      <view wx:if="{{colorChoose}}" class="color-choose-wrap">
+        <view class="colorTitle">
+          文字颜色
+        </view>
+        <scroll-view scroll-y style="height: 242.5px;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+          <radio-group class='color-radios' bindchange="colorRadioChange">
+            <label class="color-radio" bindtap="click5" wx:for="{{items5}}" wx:key="{{items5}}" data-id="{{index}}">
+              <view style="display: flex; justify-content: center">
+                <radio value="{{item.name}}" name="{{item.value}}"></radio>
+                <view class="color-block" style="{{item.value}}"></view>
+              </view>
+            </label>
+          </radio-group>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+</form>

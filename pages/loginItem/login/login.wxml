@@ -1,0 +1,18 @@
+<!--pages/login/login.wxml-->
+<view class='bg'>
+  <!-- 背景图片 -->
+  <image class='bg-img1' mode="widthFix" src="../../../static/images/login_bg1.png"></image>
+  <image class='bg-img2' mode="widthFix" src="../../../static/images/login_bg2.png"></image>
+</view>
+
+  <!-- 微信登录 -->
+  <view class='bg-color bg-flex' wx:if="{{isLoginType=='wx'}}">
+    <view class="login-button-wrap">
+      <button type='primary' open-type='getPhoneNumber' bindgetphonenumber="onGotPhoneNumber" class='wechat-login-button'>
+        <view>微信登录</view>
+      </button>
+      <button class='phone-login-button' bindtap='changeLogin'>
+        <view>手机号登录</view>
+      </button>
+    </view>
+  </view>

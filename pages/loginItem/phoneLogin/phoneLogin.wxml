@@ -1,0 +1,25 @@
+<view class='bg'>
+  <!-- 背景图片 -->
+  <image class='bg-img1' mode="widthFix" src="../../../static/images/login_bg1.png"></image>
+  <image class='bg-img2' mode="widthFix" src="../../../static/images/login_bg2.png"></image>
+</view>
+<view class="bg-color">
+  <form bindsubmit="formSubmit">
+    <view class='login-padding'>
+      <view class="input-txt phone-number-txt {{status1==0 ? 'noactive-fontColor':'active-fontColor'}}">手机号</view>
+      <view class="login-input input1 {{status1==0 ? 'noactive-border':'active-border'}}">
+        <input maxlength="11" name='phone' type='number' bindinput="userPhoneNumberInput" placeholder="请输入手机号" placeholder-class="{{status1==0 ? 'placeholder':'placeholder-active'}}" bindfocus="focus1" bindblur='blur1'/>
+      </view>
+      <view class="input-txt password-txt {{status2==0 ? 'noactive-fontColor':'active-fontColor'}}">
+        验证码
+      </view>
+      <view class="login-input input2 {{status2==0 ? 'noactive-border':'active-border'}}">
+        <input maxlength="4" name='code' type='number' placeholder="请输入验证码" placeholder-class="{{status2==0 ? 'placeholder':'placeholder-active'}}" bindfocus="focus2" bindblur='blur2'/>
+        <text class='login-code' bindtap="{{!isTime?'sendCode':''}}">{{txtCode}}</text>
+      </view>
+      <view class="login-btn">
+        <button form-type="submit">登录</button>
+      </view>
+    </view>
+  </form>
+</view>

@@ -1,0 +1,32 @@
+<!--index.wxml-->
+<view class='flexbetween search'>
+  <view class="search-bg">
+    <icon class="search-icon" type="search" size="17" wx:if="{{!isFocus}}" />
+    <input placeholder="搜错题" bindinput='watchinput' bindfocus="watchfocus" bindblur="watchblur" value="{{search}}"></input>
+    <icon catchtap="watchclear" type="clear" size="17" wx:if="{{isFocus}}" />
+  </view>
+</view>
+<view class="flexbetween-swiper">
+  <scroll-view class="scroll-X" scroll-x bindscroll="getScroll">
+    <view class="swiper-tab">  
+      <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">所有</view>  
+      <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">数学</view>  
+      <view class="swiper-tab-list {{currentTab==2 ? 'on' : ''}}" data-current="2" bindtap="swichNav">英语</view>   
+      <view class="swiper-tab-list {{currentTab==3 ? 'on' : ''}}" data-current="3" bindtap="swichNav">语文</view> 
+      <view class="swiper-tab-list {{currentTab==4 ? 'on' : ''}}" data-current="4" bindtap="swichNav">物理</view> 
+    </view>
+  </scroll-view>
+  <image class="edit-subject" src="../../../static/images/folder.png" bindtap="editSubject"></image>
+</view>
+<view class="wrong-topic-notes-contents">
+  
+</view>
+<view class="float-button-wrap">
+  <button class='new-wrong-button' bindtap="editWrong">
+    <image class='btnImg' src='../../../static/images/edit.png'></image>
+    <view>新建错题</view>
+  </button>
+</view>
+<view>
+  <dynamic dynamicCount="{{dynamicCount}}" bindtap="wrongPreviewTap"></dynamic>
+</view>

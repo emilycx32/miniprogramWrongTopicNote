@@ -1,0 +1,6 @@
+{
+  "usingComponents": {"select-subject-dialog": "../../../components/dialog/dialog", "add-time-dialog": "../../../components/dialog/dialog", "calendar": "plugin://calendar/calendar", "delete-dialog": "../../../components/dialog/dialog"},
+  "navigationBarTitleText": "新建错题",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#F5F6F5"
+}

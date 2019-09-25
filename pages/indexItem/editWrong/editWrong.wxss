@@ -1,0 +1,360 @@
+.main{
+  display: flex;
+}
+.wrong-topic-notes-preview-content{
+  width: 100%;
+  margin: 40px auto;
+  border-radius: 10px;
+}
+.main-left{
+  width: 17px;
+  height: 10px;
+  float: left;
+}
+.main-right{
+  width: 17px;
+  height: 10px;
+  float: right;
+}
+
+.question-left{
+  width: 14px;
+  height: 10px;
+  float: left;
+}
+.question-right{
+  width: 14px;
+  height: 10px;
+  float: right;
+}
+/* 重做天数样式 */
+.redo-status{
+  background-color: #D3D6DC; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 100%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin-left: 4px;
+}
+
+/* 聚焦变化 */
+.placeholder{
+  font-size: 30rpx;
+}
+.placeholder-active{
+  display: none;
+}
+.noactive-border{
+  border:1px solid #464646;
+}
+.active-border{
+  border: 2px solid #7F2FF0;
+}
+.noactive-fontColor{
+  color: #464646;
+}
+.active-fontColor{
+  color: #7F2FF0;
+}
+
+/* input样式 */
+.main-input{
+  display: flex;
+}
+.input-wrap{
+  width: 100%;
+}
+.title-input{
+  height: 112rpx;
+  line-height: 112rpx;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0 40rpx 0 40rpx;
+  display: flex;
+}
+.title-input input{
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  line-height: 112rpx;
+  font-size: 30rpx;
+}
+.txt{
+  position: absolute;
+  margin-left: 30rpx;
+  font-size: 24rpx;
+  padding: 0 20rpx;
+  margin-top: -14rpx;
+  background: white;
+}
+.title-counter{
+  font-size: 12px;
+  margin-top: 38px;
+  color: #616161;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+/* 编辑错题内容样式 */
+.content-input{
+  min-height: 112rpx;
+  line-height: 112rpx;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0 40rpx 0 40rpx;
+  font-size: 30rpx;
+}
+.content-txt{
+  color: #9b9b9b;
+}
+/* 选择样式 */
+.select-wrap{
+  width: 100%; 
+  height: 40px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  font-size: 14px; 
+  color: #464646; 
+  border-bottom: 1px solid #464646;
+  margin-bottom: 20px
+}
+.add-time-wrap{
+  margin-bottom: 52px;
+}
+/* 选择科目弹窗样式 */
+.subjects{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #464646;
+  font-weight: 700;
+  border-bottom: 1px solid #E7E7E7;
+}
+.edit-subjects-button{
+  width: 250px;
+  height: 50px;
+  background-color: #464646;
+  border-radius: 15px;
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 50px;
+  margin-top: 20px;
+}
+/* 日历样式 */
+.calendar-weeks{
+  color: #797979;
+  font-size: 12px;
+  padding: 10px 0 20px 0;
+}
+.calendar-header{
+  font-size: large;
+  color: #464646;
+  padding-top: 60px;
+}
+.calendar-current-date-wrap{
+  position: absolute;
+  left: 0;
+  top: -60px;
+  height: 106px;
+  width: 100%;
+  background-color: #464646;
+  color: white;
+}
+.current-date-wrap{
+  height: 60px;
+  width: 100%;
+  background-color: #464646;
+  position: absolute;
+  left: 0;
+  top: 46px;
+}
+.calendar-this-year{
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  top: -30px;
+  left: 20px;
+  z-index: 99;
+  font-weight: 200;
+}
+.calendar-this-date-wrap{
+  color: white;
+  font-size: 32px;
+  font-weight: 700;
+  margin-left: 20px;
+  letter-spacing: 4px;
+}
+/* 底部导航栏样式 */
+.footer-wrap{
+  display: flex;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  border-top: 0.5px solid #EDEDED;
+  background-color: white;
+}
+.noshowsetting-bottom{
+  bottom: 0.5px;
+}
+.showsetting-bottom{
+  bottom: 292.5px;
+}
+.footer-box{
+  width: 100%;
+}
+.foot{
+  display: flex;
+  width: 100%;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+.style-wrap{
+  display: flex;
+  align-items: center;
+}
+.btn{
+  width: 30px;
+  height: 30px;
+}
+.submit-btn{
+  width: 54px;
+  height: 28px;
+  border-radius: 6px;
+  background-color: #464646;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* 遮罩 */
+.mask{
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  background-color: #000;
+  opacity: 0;
+}
+/* 上滑高度 */
+.choosen{
+  width: 100%;
+  height: 292px; 
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+  border-top: 0.5px solid #EDEDED;
+  z-index: 3;
+}
+/* 内容 */
+.container-box {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 4;
+}
+/* bg-内容 */
+.bg-filter{
+  width: 100%;
+  height: 50px;
+  background-color: #E2E2E2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg-filter-a{
+  width: 30px;
+  height: 30px;
+  margin-right: 57px;
+}
+.no-bg-filter-b{
+  width: 28px;
+  height: 28px;
+  background-color: #F3F3F4;
+  border-radius: 8px;
+  border: 1px solid #84878A;
+  margin-left: 57px;
+}
+.bg-filter-b{
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 8px;
+  border: 1px solid #464646;
+  margin-left: 57px;
+}
+.character-radios, .bg-color-radios, .color-radios{
+  padding-top: 14px;
+}
+.character-radios>label, .bg-color-radios>label, .color-radios>label{
+ width:25%;
+ display: inline-block;
+ padding-bottom: 20px;
+ vertical-align: center;
+}
+radio-group label radio{
+ width:100%;
+ z-index: 3;
+ display: none;
+}
+.character-choose-img{
+  width: 50px;
+  height: 50px;
+}
+.bg-choose-block{
+  width: 42px;
+  height: 42px;
+  border-width: 4px;
+}
+.bg-choose-block{
+  border-radius: 10px;
+}
+/* font-内容 */
+.fontChooseTitle, .alignChooseTitle, .colorTitle{
+  width: 100%;
+  height: 44px;
+  border-bottom: 1px solid #EDEDED;
+  display: flex;
+  align-items: center;
+  padding-left: 17px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #464646;
+}
+.font-radios>label{
+ width:100%;
+ display: flex;
+ flex-direction: column;
+}
+.font-setting{
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid #EDEDED;
+  font-size: 14px;
+  color: #464646;
+  padding-left: 17px;
+  display: flex;
+  align-items: center;
+}
+/* align-内容 */
+.align-setting{
+  width: 34px;
+  height: 34px;
+}
+/* color-内容 */
+.color-block{
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}

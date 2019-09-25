@@ -1,0 +1,8 @@
+{
+ "usingComponents": {
+  "dynamic": "/components/dynamic/dynamic"
+},
+  "navigationBarTitleText": "待重做的错题",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#F5F6F5"
+}

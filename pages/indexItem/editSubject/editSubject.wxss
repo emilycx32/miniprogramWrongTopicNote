@@ -1,0 +1,40 @@
+.float-button-wrap{
+  display: flex;
+  justify-content: center;
+}
+.new-subject-button{
+  font-size: 30rpx;
+  border-radius: 30rpx;
+  color: white;
+  background: #464646;
+  position: fixed;
+  bottom: 60rpx;
+  display: flex;
+  width: 500rpx;
+  height: 100rpx;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+.subject{
+  height: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 32rpx;
+  border-bottom: 1px solid #E7E7E7;
+}
+.white-blank{
+  width: 90rpx;
+  height: 90rpx;
+  background-color: white;
+}
+.delete-subject{
+  width: 90rpx;
+  height: 90rpx;
+}
+.subject-input{
+  margin-top: 24px;
+  border-bottom: 2px solid #7F2FF0;
+  height: 30px;
+}

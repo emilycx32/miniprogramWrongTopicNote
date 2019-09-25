@@ -1,0 +1,103 @@
+/**index.wxss**/
+page{
+  padding-bottom: 114rpx;
+}
+.search{
+  background: #F5F6F5;
+  padding: 24rpx 28rpx;
+  margin: 0 0;
+}
+.search-bg{
+  /* width: 600rpx; */
+  flex: 1;
+  height: 60rpx;
+  box-sizing: border-box;
+  padding: 0 24rpx;
+  line-height: 60rpx;
+  background:white;
+  border-radius:28rpx;
+  display: flex;
+  align-items: center;
+}
+.search-bg icon{
+  width: 34rpx;
+  height: 34rpx;
+}
+.search-icon{
+  margin-right: 40rpx;
+}
+.search-bg input{
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.swiper-tab{  
+  width: 120%; 
+  text-align: left;
+  margin-left: 34rpx;  
+  line-height: 80rpx;
+}  
+.swiper-tab-list{  
+  font-size: 32rpx;  
+  display: inline-block;  
+  padding: 0 40rpx;  
+  color: #B8B8B8; 
+  font-weight: 500; 
+}  
+.on{ 
+  color: #464646;  
+  border-bottom: 6rpx solid #464646;
+  font-weight: 900;
+}  
+  
+.swiper-box{ 
+  display: block; 
+  height: 100%; 
+  width: 100%; 
+  overflow: hidden; 
+}  
+.swiper-box-tit{
+  height: 100rpx;
+  border-top: 2rpx solid #D8D8D8;
+  border-bottom: 2rpx solid #D8D8D8;
+  padding: 0 28rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 28rpx;
+}
+.edit-subject{
+  height: 80rpx;
+  width: 80rpx;
+}
+.flexbetween-swiper {
+  display: flex;
+}
+.edit-subject{
+  margin-right: 34rpx;
+  padding-left: 34rpx;
+}
+.float-button-wrap{
+  display: flex;
+  justify-content: center;
+}
+.new-wrong-button{
+  font-size: 28rpx;
+  border-radius: 50rpx;
+  color: white;
+  background: #464646;
+  position: fixed;
+  bottom: 34rpx;
+  display: flex;
+  width: 252rpx;
+  height: 100rpx;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 3px 8px #b8b8b8;
+  font-weight: 500;
+}
+.btnImg {
+  margin-right: 20rpx;
+  width: 35rpx;
+  height: 35rpx;
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {"mp-dialog": "../../../components/dialog/dialog",    "delete-dialog": "../../../components/dialog/dialog"},
+  "navigationBarTitleText": "编辑科目",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#F5F6F5"
+}

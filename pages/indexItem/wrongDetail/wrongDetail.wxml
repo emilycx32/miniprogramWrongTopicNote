@@ -1,0 +1,73 @@
+<view class="action-button-wrap">
+  <image style="width: 30px; height: 30px; margin-right: 14px" src="../../../static/images/edit-wrong.png" bindtap="editTap"></image>
+  <image style="width: 30px; height: 30px" src="../../../static/images/share.png"></image>
+</view>
+<view class="main">
+  <view class="main-left"></view>
+  <view class="wrong-topic-notes-preview-wrap" style="width: 100%">
+    <image wx:if="{{notBgColorChoose}}" style="width: 50px; height: 50px; position: absolute; right: 16px; top: 15px" mode="aspectFit" src="{{src}}"></image>
+    <view class="wrong-topic-notes-preview-content" style="background-color: {{previewBg}}; border: {{previewBgBorder}}; display: flex">
+      <view class="question-left"></view>
+      <view class="content" style="width: 100%">
+        <view class="preview-title" style="font-size: 14px; margin: 14px 0; color: {{fontColor}}; font-weight: 700">{{title}}</view>
+        <view class="question-wrap" style="width: 100%; {{questionTextTemp=='' && questionImage=='' ? 'border-bottom: 0px solid rgba(0, 0, 0, 0)' : 'border-bottom: 1px solid rgba(0, 0, 0, 0.05)'}} ">
+          <image src="{{questionImage}}" style="width: 100%; {{questionImage=='' ? 'display: none' : 'display: block'}} " hidden="{{questionImageHidden}}"></image>
+          <view class="{{question-text}}" style="font-size: {{fontSize}}; color: {{fontColor}}; margin: 10px 0; width: 100%; line-height: {{lineHight}}; text-align: {{textAlign}}; word-break:break-all">{{questionText}}</view>
+        </view>
+        <view class="wrong-topic-notes-preview-answer" style="width: 100%; {{answerTextTemp=='' && answerImage=='' ? 'border-bottom: 0px solid rgba(0, 0, 0, 0)' : 'border-bottom: 1px solid rgba(0, 0, 0, 0.05)'}}">
+          <view class="answer-switch" style="display: flex; align-items: center; {{answerTextTemp=='' && answerImage=='' ? 'display: none' : 'display: flex'}}" bindtap="answerSwitchTap">
+            <image src="{{lightImage}}" style="width: 15px; height: 19px;margin-right: 8px"></image>
+            <view style="font-size: 12px; color: {{fontColor}}; font-weight: 700; margin: 10px 0; margin-right: 5px">{{answerSwitch}}</view>
+            <image src="{{switchTriangle}}" style="width: 8px; height: 4px"></image>
+          </view>
+          <image src="{{answerImageP}}" style="width: 100%" hidden="{{answerImagePHidden}}" bindtap="answerImagePreview"></image>
+          <view class="{{answer-text}}" hidden="{{answerTestHidden}}" style="font-size: {{fontSize}}; color: {{fontColor}}; margin: 10px 0; width: 100%; line-height: {{lineHight}}; text-align: {{textAlign}}; word-break:break-all">{{answerText}}</view>
+        </view>
+        <view class="info" style="display: flex; justify-content: space-between; margin: 10px 0 14px 0">
+          <view class="info1" style="display: flex; align-items: center">
+            <view class="date" style="font-size: 12px; color: {{fontColor}};">{{date}}</view>
+            <view class="subject" style="margin-left: 8px;border: 0.5px solid #464646; border-radius: 10px; border-color: {{fontColor}}; font-size: 11px; color: {{fontColor}}; padding: 2px 6px">{{subject}}</view>
+          </view>
+          <view class="info2" style="display: flex; align-items: center; width: 180px; flex-direction: row-reverse; flex-wrap: wrap">
+            <view class="redo-status redo-status-15">
+              <view style="font-size: 11px; color: white">15</view>
+            </view>
+            <view class=" redo-status redo-status-4">
+              <view style="font-size: 11px; color: white">4</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="question-right"></view>
+    </view>
+  </view>
+  <view class="main-right"></view>
+</view>
+<view class="main">
+  <view class="main-left"></view>
+  <view class="redo-record-list-wrap">
+    <view style="font-size: 16px; color: #464646; font-weight: 700; margin-bottom: 12px">重做记录</view>
+    <view wx:for="{{redoLen}}" style="width: 100%">
+      <view wx:if="{{index == 0 }}" class="redo-record-wrap">
+        <view class="redo-date">{{date}}</view>
+        <view class="redo-date-status" style="color: {{fourDre}}">{{redoDateStatus1}}</view>
+      </view>
+      <view wx:if="{{index == 1}}" class="redo-record-wrap">
+        <view class="redo-date">{{date}}</view>
+        <view class="redo-date-status" style="color: {{fifteenDre}}">{{redoDateStatus2}}</view>
+      </view>
+      <view wx:if="{{index == 2}}" class="redo-record-wrap">
+        <view class="redo-date">{{date}}</view>
+        <view class="redo-date-status" style="color: {{meDre1}}">{{redoDateStatus3}}</view>
+      </view>
+      <view wx:if="{{index == 3}}" class="redo-record-wrap">
+        <view class="redo-date">{{date}}</view>
+        <view class="redo-date-status" style="color: {{meDre2}}">{{redoDateStatus4}}</view>
+      </view>
+    </view>
+  </view>
+  <view class="main-right"></view>
+</view>
+<button class='done-button' style="background-color: {{doneButtonC}}" bindtap="doneTap">
+  <view>完成打卡</view>
+</button>
