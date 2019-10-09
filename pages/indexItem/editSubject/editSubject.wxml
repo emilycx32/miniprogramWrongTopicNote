@@ -4,11 +4,14 @@
   </button>
 </view>
 <scroll-view scroll-y style="height: 400px; width: 98%; margin: 0 auto;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <view class="scroll-view-item subject">
+  <block wx:for-items="{{subjects}}" wx:for-item="subject" wx:key="{{item.name}}">
+    <view class="subject">
     <view class="white-blank"></view>
-    <view>数学</view>
+    <view>{{subject.name}}</view>
     <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap="deleteTapDialog"></image>
   </view>
+  </block>
+  
   <mp-dialog title="新建科目" show="{{dialogShow}}" bindbuttontap="tapDialogButton" buttons="{{buttons}}">
     <view class="subject-input">
       <input name="subject" type="text" catchtap="subjectInput" focus="{{focus}}" cursor-spacing='130px'/>
@@ -19,45 +22,4 @@
       确定要删除这个科目吗？
     </view>
   </delete-dialog>
-
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>语文</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>英语</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>物理</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>化学</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>生物</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>历史</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>地理</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
-  <view class="scroll-view-item subject">
-    <view class="white-blank"></view>
-    <view>政治</view>
-    <image class="delete-subject" src="../../../static/images/subject_delete.png" bindtap=""></image>
-  </view>
 </scroll-view>

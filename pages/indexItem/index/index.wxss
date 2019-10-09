@@ -1,6 +1,7 @@
 /**index.wxss**/
 page{
   padding-bottom: 114rpx;
+  height: 100%;
 }
 .search{
   background: #F5F6F5;
@@ -31,14 +32,23 @@ page{
   font-size: 28rpx;
 }
 
+.nav{
+  box-sizing: border-box;
+  padding-left: 17px;
+  overflow: hidden;
+  line-height: 80rpx;
+  background: white;
+  font-size: 32rpx;
+  white-space: nowrap;
+}
 .swiper-tab{  
-  width: 120%; 
   text-align: left;
   margin-left: 34rpx;  
   line-height: 80rpx;
 }  
-.swiper-tab-list{  
-  font-size: 32rpx;  
+.nav-item{  
+  width: 12%;
+  text-align: center;  
   display: inline-block;  
   padding: 0 40rpx;  
   color: #B8B8B8; 
@@ -80,6 +90,7 @@ page{
 .float-button-wrap{
   display: flex;
   justify-content: center;
+  z-index: 999;
 }
 .new-wrong-button{
   font-size: 28rpx;
@@ -95,9 +106,17 @@ page{
   align-items: center;
   box-shadow: 0 3px 8px #b8b8b8;
   font-weight: 500;
+  z-index: 999;
 }
 .btnImg {
   margin-right: 20rpx;
   width: 35rpx;
   height: 35rpx;
+}
+.tab-box{
+    height: 100%;
+    box-sizing: border-box;
+}
+.tab-content{
+    overflow-y: scroll;
 }

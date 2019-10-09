@@ -6,11 +6,13 @@
     "pages/indexItem/editWrong/editWrong",
     "pages/indexItem/wrongDetail/wrongDetail",
     "pages/indexItem/fourSuccess/fourSuccess",
+    "pages/indexItem/fifteenSuccess/fifteenSuccess",
+    "pages/indexItem/freeSuccess/freeSuccess",
     "pages/calendarItem/calendar/calendar",
     "pages/meItem/me/me",
+    "pages/meItem/feedback/feedback",
     "pages/loginItem/login/login",
-    "pages/loginItem/phoneLogin/phoneLogin",
-    "pages/inningSetting/inningSetting"
+    "pages/loginItem/phoneLogin/phoneLogin"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,11 +44,5 @@
         "selectedIconPath": "static/images/me_purple.png"
       }
     ]
-  },
-  "plugins": {
-    "calendar": {
-      "version": "1.1.3",
-      "provider": "wx92c68dae5a8bb046"
-    }
   }
 }

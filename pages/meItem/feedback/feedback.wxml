@@ -1,0 +1,44 @@
+<image class="feedback-bg1" src="../../../static/images/feedback-1.png"></image>
+<image class="feedback-bg2" src="../../../static/images/feedback-2.png"></image>
+<view class="main">
+  <view class="main-left"></view>
+  <view class="feedback-wrap feedback-text-wrap">
+    <image class="feedback-text-icon" src="../../../static/images/feedback-text.png"></image>
+    <view class="feedback-text-input-wrap feedback-input-wrap">
+      <view class="title">问题和意见</view>
+      <view class="feedback-text-input">
+        <textarea placeholder="请填写10个字以上的问题描述以便我们提供更好的帮助" placeholder-style="line-height: 42rpx;" maxlength="100" style="line-height:42rpx; color: #464646; padding-bottom: 8px; font-size: 14px; height: 108px" bindinput="textChange" />
+        <view class="text-counter">{{lastArea}}/100</view>
+      </view>
+    </view>
+  </view>
+  <view class="main-right"></view>
+</view>
+<view class="main">
+  <view class="main-left"></view>
+  <view class="feedback-wrap feedback-photos-wrap">
+    <image class="feedback-photos-icon" src="../../../static/images/feedback-photos.png"></image>
+    <view class="feedback-photos-input-wrap feedback-input-wrap">
+      <view class="photos-title">图片</view>
+      <view class="subtitle">（选填，提供问题截图）</view>
+      <view class="feedback-photos-input">
+        <!-- 根据已选择的图片临时路径数组展示图片-->
+        <view class='ui_uploader_item' wx:for="{{uploaderList}}" wx:key="{{index}}">
+          <!-- 删除-->
+          <icon class='ui_uploader_item_icon' bindtap='clearImg' data-index="{{index}}" type="clear" size="20" color="#ededed" />
+          <!-- 图片-->
+          <image bindtap='showImg' data-index="{{index}}" src='{{item}}' style="width: 88px; height: 88px; border: 1px solid #ededed; border-radius: 4px"></image>
+        </view>
+        <!-- 上传按钮+框 -->
+        <view class='ui_uploader' bindtap='upload' wx:if="{{showUpload}}">
+          <image src='../../../static/images/plus.png' style="width: 30px; height: 30px;"></image>
+        </view>
+      </view>
+      <view class="photo-counter">{{uploaderNum}}/3</view>
+    </view>
+  </view>
+  <view class="main-right"></view>
+</view>
+<button class='submit-button' bindtap="submitTap">
+  <view>提交</view>
+</button>

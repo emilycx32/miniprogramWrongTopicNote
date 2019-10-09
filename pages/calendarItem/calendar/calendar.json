@@ -1,4 +1,8 @@
 {
-  "navigationBarTitleText": "查看启动日志",
-  "usingComponents": {}
+  "usingComponents": {
+    "calendar": "../../../components/calendar/calendar", "dayDynamic": "/components/dayDynamic/dayDynamic"
+  },
+  "navigationBarTitleText": "日历",
+  "navigationBarTextStyle": "black",
+  "navigationBarBackgroundColor": "#F5F6F5"
 }

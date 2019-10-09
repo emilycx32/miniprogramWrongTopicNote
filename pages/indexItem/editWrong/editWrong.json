@@ -1,5 +1,5 @@
 {
-  "usingComponents": {"select-subject-dialog": "../../../components/dialog/dialog", "add-time-dialog": "../../../components/dialog/dialog", "calendar": "plugin://calendar/calendar", "delete-dialog": "../../../components/dialog/dialog"},
+  "usingComponents": {"select-subject-dialog": "../../../components/dialog/dialog", "add-time-dialog": "../../../components/dialog/dialog", "calendar": "../../../components/calendar/calendar", "delete-dialog": "../../../components/dialog/dialog", "delete-question-image-dialog": "../../../components/dialog/dialog", "delete-answer-image-dialog": "../../../components/dialog/dialog"},
   "navigationBarTitleText": "新建错题",
   "navigationBarTextStyle": "black",
   "navigationBarBackgroundColor": "#F5F6F5"

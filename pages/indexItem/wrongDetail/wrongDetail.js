@@ -130,7 +130,7 @@ Page({
 /* 打卡成功跳转到成功页面*/
   doneTap: function() {
     wx.navigateTo({
-      url: '../fourSuccess/fourSuccess',
+      url: '../freeSuccess/freeSuccess',
     })
   },
 

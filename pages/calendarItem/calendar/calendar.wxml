@@ -1,6 +1,11 @@
-<!--logs.wxml-->
-<view class="container log-list">
-  <block wx:for="{{logs}}" wx:for-item="log">
-    <text class="log-item">{{index + 1}}. {{log}}</text>
-  </block>
+<!--calendar.wxml-->
+<view class="main" style="width: 100%">
+  <view class="black-bg"></view>
+  <view class="calendar-wrap" style="padding: 0 17px; border-bottom: 1px solid #E7E7E7">
+    <calendar binddayClick="dClick" weeks-type="cn" days-color="{{dayStyle}}" cell-size="40" board-style="calendar-weeks" header-style="calendar-header" bindnextMonth="next" bindprevMonth="prev" addon="custom"
+    days-addon="{{days_addon}}"/>
+  </view>
+</view>
+<view>
+  <dayDynamic dayDynamicCount="{{dayDynamicCount}}" bindtap="wrongPreviewTap"></dayDynamic>
 </view>

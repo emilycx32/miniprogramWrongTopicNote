@@ -23,44 +23,11 @@ Page({
   },
 
   /**
-   * Lifecycle function--Called when page show
+   * 跳转到意见反馈页面
    */
-  onShow: function () {
-
+  feedbackTap: function () {
+    wx.navigateTo({
+      url: '../feedback/feedback',
+    })
   },
-
-  /**
-   * Lifecycle function--Called when page hide
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * Lifecycle function--Called when page unload
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * Page event handler function--Called when user drop down
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * Called when page reach bottom
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
-  }
 })

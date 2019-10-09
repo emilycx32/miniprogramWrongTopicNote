@@ -105,6 +105,14 @@
   padding: 0 40rpx 0 40rpx;
   font-size: 30rpx;
 }
+.q_uploader_item_icon, .a_uploader_item_icon{
+  position: absolute;
+  z-index: 5;
+  margin-top: -15px;
+}
+.q-image, .a-image{
+  z-index: 4;
+}
 .content-txt{
   color: #9b9b9b;
 }

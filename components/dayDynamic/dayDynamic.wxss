@@ -1,0 +1,48 @@
+.list-title{
+  font-size: 18px;
+  color: #464646;
+  margin-left: 17px;
+  margin-top: 20px;
+}
+
+.main{
+  display: flex;
+}
+.wrong-topic-notes-preview-content{
+  width: 100%;
+  margin: 30px auto 10px auto;
+  border-radius: 10px;
+}
+.main-left{
+  width: 17px;
+  height: 10px;
+  float: left;
+}
+.main-right{
+  width: 17px;
+  height: 10px;
+  float: right;
+}
+
+.question-left{
+  width: 14px;
+  height: 10px;
+  float: left;
+}
+.question-right{
+  width: 14px;
+  height: 10px;
+  float: right;
+}
+
+/* 重做天数样式 */
+.redo-status{
+  background-color: #D3D6DC; 
+  width: 20px; 
+  height: 20px; 
+  border-radius: 100%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  margin-left: 4px;
+}

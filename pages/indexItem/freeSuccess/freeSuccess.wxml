@@ -1,0 +1,5 @@
+<view class="main">
+  <image src="../../../static/images/success_green.png" style="width: 300px; height: 300px; margin-top: 60px"></image>
+  <view style="color: #464646; font-size: 16px; padding: 8px">打卡成功，学习从来无捷径，循序渐进登高峰</view>
+  <view style="display: flex; align-items: center; font-size: 12px" bindtap="backToIndexTap"><view style="color: #A2A2A2">返回</view> <view style="color: #464646">[首页]</view> <view style="color: #A2A2A2">继续打卡</view></view>
+</view>

@@ -1,2 +1,21 @@
 <!--pages/meItem/me/me.wxml-->
-<text>pages/meItem/me/me.wxml</text>
+<view class='bg'>
+  <!-- 背景图片 -->
+  <image class='me-bg' mode="widthFix" src="../../../static/images/me-bg.png"></image>
+</view>
+<view class="user-info">
+  <image class='me-image' src="../../../static/images/me-image.png"></image>
+  <view class="me-name">Emily</view>
+</view>
+<view class="topic-number-wrap">
+  <view class="topic-number">126</view>
+  <view class="text">完成打卡的错题数</view>
+</view>
+<button class='feed-button' bindtap="feedbackTap">
+  <view>意见反馈</view>
+</button>
+<button class='about-button' bindtap="aboutTap">
+  <view>关于错题本</view>
+</button>
+
+

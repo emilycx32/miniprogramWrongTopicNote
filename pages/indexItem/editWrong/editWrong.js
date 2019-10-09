@@ -31,8 +31,15 @@ Page({
     status3: 0,
     image: [],
     questionImageHidden: true,
+    qImageUploaderList: [],
+    qImageUploaderNum: 0,
+    qImageShowUpload: true,
     questionTextTemp: '',
     answerImageHidden: true,
+    answerImageHas: false,
+    aImageUploaderList: [],
+    aImageUploaderNum: 0,
+    aImageShowUpload: true,
     answerTestHidden: true,
     answerTextTemp: '',
     isFocus: false,
@@ -56,7 +63,7 @@ Page({
     clickD: '',
     dayStyle: [{
       month: 'current',
-      day: '',
+      day: 'clickD',
       color: 'white',
       background: '#1AA85C'
     }, {
@@ -74,7 +81,7 @@ Page({
       day: new Date().getDate() + 15,
       color: 'white',
       background: '#F6B933'
-    },],
+    }, ],
     status4: 0,
     chooseSize: false,
     bgChoose: false,
@@ -86,249 +93,265 @@ Page({
     noCharacterChoose: false,
     bgColorChoose: false,
     deleteDialogShow: false,
-    deleteButtons: [{ text: '取消' }, { text: '确定' }],
+    deleteButtons: [{
+      text: '取消'
+    }, {
+      text: '确定'
+    }],
+    deleteQuestionImageDialogShow: false,
+    deleteQuestionImageButtons: [{
+      text: '取消'
+    }, {
+      text: '确定'
+    }],
+    deleteAnswerImageDialogShow: false,
+    deleteAnswerImageButtons: [{
+      text: '取消'
+    }, {
+      text: '确定'
+    }],
     items: [{
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator001.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator002.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator003.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator004.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator005.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator006.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator007.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator008.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator009.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator010.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator011.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator012.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator013.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator014.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator015.png'
-    },
-    {
-      name: 'illustrator001',
-      value: '../../../static/images/illustrator016.png'
-    },
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator001.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator002.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator003.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator004.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator005.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator006.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator007.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator008.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator009.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator010.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator011.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator012.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator013.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator014.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator015.png'
+      },
+      {
+        name: 'illustrator001',
+        value: '../../../static/images/illustrator016.png'
+      },
     ],
     items2: [{
-      name: 'pureBgColor001',
-      value: 'background-color: #F5F6F7;border: 4px solid #F5F6F7'
-    },
-    {
-      name: 'pureBgColor002',
-      value: 'background-color: white;border: 4px solid #F5F6F7'
-    },
-    {
-      name: 'pureBgColor003',
-      value: 'background-color: #CECECF;border: 4px solid #CECECF'
-    },
-    {
-      name: 'pureBgColor004',
-      value: 'background-color: white;border: 4px solid #CECECF'
-    },
-    {
-      name: 'pureBgColor005',
-      value: 'background-color: #585859;border: 4px solid #585859'
-    },
-    {
-      name: 'pureBgColor006',
-      value: 'background-color: white;border: 4px solid #585859'
-    },
-    {
-      name: 'pureBgColor007',
-      value: 'background-color: #333332;border: 4px solid #333332'
-    },
-    {
-      name: 'pureBgColor008',
-      value: 'background-color: white;border: 4px solid #333332'
-    },
-    {
-      name: 'pureBgColor009',
-      value: 'background-color: #37C1F0;border: 4px solid #37C1F0'
-    },
-    {
-      name: 'pureBgColor010',
-      value: 'background-color: white;border: 4px solid #37C1F0'
-    },
-    {
-      name: 'pureBgColor011',
-      value: 'background-color: #0E76BC;border: 4px solid #0E76BC'
-    },
-    {
-      name: 'pureBgColor012',
-      value: 'background-color: white;border: 4px solid #0E76BC'
-    },
-    {
-      name: 'pureBgColor013',
-      value: 'background-color: #1E3C7C;border: 4px solid #1E3C7C'
-    },
-    {
-      name: 'pureBgColor014',
-      value: 'background-color: white;border: 4px solid #1E3C7C'
-    },
-    {
-      name: 'pureBgColor015',
-      value: 'background-color: #EAA12E;border: 4px solid #EAA12E'
-    },
-    {
-      name: 'pureBgColor016',
-      value: 'background-color: white;border: 4px solid #EAA12E'
-    },
+        name: 'pureBgColor001',
+        value: 'background-color: #F5F6F7;border: 4px solid #F5F6F7'
+      },
+      {
+        name: 'pureBgColor002',
+        value: 'background-color: white;border: 4px solid #F5F6F7'
+      },
+      {
+        name: 'pureBgColor003',
+        value: 'background-color: #CECECF;border: 4px solid #CECECF'
+      },
+      {
+        name: 'pureBgColor004',
+        value: 'background-color: white;border: 4px solid #CECECF'
+      },
+      {
+        name: 'pureBgColor005',
+        value: 'background-color: #585859;border: 4px solid #585859'
+      },
+      {
+        name: 'pureBgColor006',
+        value: 'background-color: white;border: 4px solid #585859'
+      },
+      {
+        name: 'pureBgColor007',
+        value: 'background-color: #333332;border: 4px solid #333332'
+      },
+      {
+        name: 'pureBgColor008',
+        value: 'background-color: white;border: 4px solid #333332'
+      },
+      {
+        name: 'pureBgColor009',
+        value: 'background-color: #37C1F0;border: 4px solid #37C1F0'
+      },
+      {
+        name: 'pureBgColor010',
+        value: 'background-color: white;border: 4px solid #37C1F0'
+      },
+      {
+        name: 'pureBgColor011',
+        value: 'background-color: #0E76BC;border: 4px solid #0E76BC'
+      },
+      {
+        name: 'pureBgColor012',
+        value: 'background-color: white;border: 4px solid #0E76BC'
+      },
+      {
+        name: 'pureBgColor013',
+        value: 'background-color: #1E3C7C;border: 4px solid #1E3C7C'
+      },
+      {
+        name: 'pureBgColor014',
+        value: 'background-color: white;border: 4px solid #1E3C7C'
+      },
+      {
+        name: 'pureBgColor015',
+        value: 'background-color: #EAA12E;border: 4px solid #EAA12E'
+      },
+      {
+        name: 'pureBgColor016',
+        value: 'background-color: white;border: 4px solid #EAA12E'
+      },
     ],
     items3: [{
-      name: 'fontSize001',
-      value: '10号'
-    },
-    {
-      name: 'fontSize002',
-      value: '11号'
-    },
-    {
-      name: 'fontSize003',
-      value: '12号'
-    },
-    {
-      name: 'fontSize004',
-      value: '13号'
-    },
-    {
-      name: 'fontSize005',
-      value: '14号'
-    },
-    {
-      name: 'fontSize006',
-      value: '15号'
-    },
-    {
-      name: 'fontSize007',
-      value: '16号'
-    },
-    {
-      name: 'fontSize008',
-      value: '17号'
-    },
-    {
-      name: 'fontSize009',
-      value: '18号'
-    },
-    {
-      name: 'fontSize010',
-      value: '20号'
-    },
-    {
-      name: 'fontSize011',
-      value: '22号'
-    },
-    {
-      name: 'fontSize012',
-      value: '24号'
-    },
-    {
-      name: 'fontSize013',
-      value: '26号'
-    },
-    {
-      name: 'fontSize014',
-      value: '28号'
-    },
+        name: 'fontSize001',
+        value: '10号'
+      },
+      {
+        name: 'fontSize002',
+        value: '11号'
+      },
+      {
+        name: 'fontSize003',
+        value: '12号'
+      },
+      {
+        name: 'fontSize004',
+        value: '13号'
+      },
+      {
+        name: 'fontSize005',
+        value: '14号'
+      },
+      {
+        name: 'fontSize006',
+        value: '15号'
+      },
+      {
+        name: 'fontSize007',
+        value: '16号'
+      },
+      {
+        name: 'fontSize008',
+        value: '17号'
+      },
+      {
+        name: 'fontSize009',
+        value: '18号'
+      },
+      {
+        name: 'fontSize010',
+        value: '20号'
+      },
+      {
+        name: 'fontSize011',
+        value: '22号'
+      },
+      {
+        name: 'fontSize012',
+        value: '24号'
+      },
+      {
+        name: 'fontSize013',
+        value: '26号'
+      },
+      {
+        name: 'fontSize014',
+        value: '28号'
+      },
     ],
     items4: [{
-      name: 'align001',
-      value: '../../../static/images/align-left.png'
-    },
-    {
-      name: 'align002',
-      value: '../../../static/images/align-center.png'
-    },
-    {
-      name: 'align003',
-      value: '../../../static/images/align-right.png'
-    },
+        name: 'align001',
+        value: '../../../static/images/align-left.png'
+      },
+      {
+        name: 'align002',
+        value: '../../../static/images/align-center.png'
+      },
+      {
+        name: 'align003',
+        value: '../../../static/images/align-right.png'
+      },
     ],
     items5: [{
-      name: 'color001',
-      value: 'background-color: #464646'
-    },
-    {
-      name: 'color002',
-      value: 'background-color: #585859'
-    },
-    {
-      name: 'color003',
-      value: 'background-color: #CECECF'
-    },
-    {
-      name: 'color004',
-      value: 'background-color: #F5F6F7'
-    },
-    {
-      name: 'color005',
-      value: 'background-color: white'
-    },
-    {
-      name: 'color006',
-      value: 'background-color: #1E3C7C'
-    },
-    {
-      name: 'color007',
-      value: 'background-color: #0E76BC'
-    },
-    {
-      name: 'color008',
-      value: 'background-color: #37C1F0'
-    },
-    {
-      name: 'color009',
-      value: 'background-color: #EAA12E'
-    },
+        name: 'color001',
+        value: 'background-color: #464646'
+      },
+      {
+        name: 'color002',
+        value: 'background-color: #585859'
+      },
+      {
+        name: 'color003',
+        value: 'background-color: #CECECF'
+      },
+      {
+        name: 'color004',
+        value: 'background-color: #F5F6F7'
+      },
+      {
+        name: 'color005',
+        value: 'background-color: white'
+      },
+      {
+        name: 'color006',
+        value: 'background-color: #1E3C7C'
+      },
+      {
+        name: 'color007',
+        value: 'background-color: #0E76BC'
+      },
+      {
+        name: 'color008',
+        value: 'background-color: #37C1F0'
+      },
+      {
+        name: 'color009',
+        value: 'background-color: #EAA12E'
+      },
     ],
   },
   /**
    * 控制day状态只在本月显示
    */
-  next: function (e) {
+  next: function(e) {
     var date = new Date();
     var todayDate = new Date(date.getTime());
     var fourDate = new Date(date.getTime() + 4 * 24 * 60 * 60 * 1000);
@@ -344,18 +367,6 @@ Page({
     var fifteenD = fifteenDate.getDate();
     var currentMonth = e.detail.currentMonth;
     var currentYear = e.detail.currentYear;
-    let changeClickDay = `dayStyle[0].day`;
-    let changeClickBg = `dayStyle[0].background`;
-    let changeClickColor = 'dayStyle[0].color';
-    let changeTDay = `dayStyle[1].day`;
-    let changeTBg = `dayStyle[1].background`;
-    let changeTColor = 'dayStyle[1].color';
-    let changeFourDay = `dayStyle[2].day`;
-    let changeFourBg = `dayStyle[2].background`;
-    let changeFourColor = 'dayStyle[2].color';
-    let changeFifteenDay = `dayStyle[3].day`;
-    let changeFifteenBg = `dayStyle[3].background`;
-    let changeFifteenColor = 'dayStyle[3].color';
 
     if (this.data.clickY == currentYear && this.data.clickM == currentMonth && tY == currentYear && tM == currentMonth && fourY == currentYear && fourM == currentMonth && fifteenY == currentYear && fifteenM == currentMonth) {
       this.setData({
@@ -379,7 +390,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && fourY == currentYear && fourM == currentMonth && fifteenY == currentYear && fifteenM == currentMonth) {
       this.setData({
@@ -403,7 +414,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && fourY == currentYear && fourM == currentMonth && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -427,7 +438,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if (fifteenY == currentYear && fifteenM == currentMonth && fourY == currentYear && fourM == currentMonth && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -451,7 +462,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && fourY == currentYear && fourM == currentMonth && (fifteenY != currentYear || fifteenM != currentMonth) && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -475,7 +486,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && fourY == currentYear && fourM == currentMonth && fifteenY == currentYear && fifteenM == currentMonth && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -499,7 +510,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && (fourY != currentYear || fourM != currentMonth) && fifteenY == currentYear && fifteenM == currentMonth && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       if (this.data.clickD == fourD) {
@@ -524,7 +535,7 @@ Page({
             day: fifteenD,
             color: 'white',
             background: '#F6B933'
-          },]
+          }, ]
         })
       } else {
         this.setData({
@@ -548,7 +559,7 @@ Page({
             day: fifteenD,
             color: 'white',
             background: '#F6B933'
-          },]
+          }, ]
         })
       }
 
@@ -574,7 +585,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && (fourY != currentYear || fourM != currentMonth) && (fifteenY != currentYear || fifteenM != currentMonth) && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -598,7 +609,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && (fourY != currentYear || fourM != currentMonth) && fifteenY == currentYear && fifteenM == currentMonth && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -622,7 +633,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && (fourY != currentYear || fourM != currentMonth) && (fifteenY != currentYear || fifteenM != currentMonth) && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -646,7 +657,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else {
       this.setData({
@@ -670,12 +681,12 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     }
   },
 
-  prev: function (e) {
+  prev: function(e) {
     var date = new Date();
     var todayDate = new Date(date.getTime());
     var fourDate = new Date(date.getTime() + 4 * 24 * 60 * 60 * 1000);
@@ -713,7 +724,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && fourY == currentYear && fourM == currentMonth && fifteenY == currentYear && fifteenM == currentMonth) {
       this.setData({
@@ -737,7 +748,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && fourY == currentYear && fourM == currentMonth && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -761,7 +772,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if (fifteenY == currentYear && fifteenM == currentMonth && fourY == currentYear && fourM == currentMonth && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -785,7 +796,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && fourY == currentYear && fourM == currentMonth && (fifteenY != currentYear || fifteenM != currentMonth) && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -809,7 +820,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && fourY == currentYear && fourM == currentMonth && fifteenY == currentYear && fifteenM == currentMonth && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -833,7 +844,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && (fourY != currentYear || fourM != currentMonth) && fifteenY == currentYear && fifteenM == currentMonth && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -857,7 +868,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && (fourY != currentYear || fourM != currentMonth) && (fifteenY != currentYear || fifteenM != currentMonth) && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -881,7 +892,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if (tY == currentYear && tM == currentMonth && (fourY != currentYear || fourM != currentMonth) && (fifteenY != currentYear || fifteenM != currentMonth) && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -905,7 +916,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && (fourY != currentYear || fourM != currentMonth) && fifteenY == currentYear && fifteenM == currentMonth && (this.data.clickY != currentYear || this.data.clickM != currentMonth)) {
       this.setData({
@@ -929,7 +940,7 @@ Page({
           day: fifteenD,
           color: 'white',
           background: '#F6B933'
-        },]
+        }, ]
       })
     } else if ((tY != currentYear || tM != currentMonth) && (fourY != currentYear || fourM != currentMonth) && (fifteenY != currentYear || fifteenM != currentMonth) && this.data.clickY == currentYear && this.data.clickM == currentMonth) {
       this.setData({
@@ -953,7 +964,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     } else {
       this.setData({
@@ -977,7 +988,7 @@ Page({
           day: fifteenD,
           color: '#464646',
           background: 'white'
-        },]
+        }, ]
       })
     }
   },
@@ -985,7 +996,7 @@ Page({
   /**
    * 获取当前日期
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     var DATE = util.formatDate(new Date());
     let todayDay = util.getDates(1, DATE);
     this.setData({
@@ -997,7 +1008,7 @@ Page({
   /**
    * 隐藏或显示答案
    */
-  answerSwitchTap: function (e) {
+  answerSwitchTap: function(e) {
     if (this.data.answerSwitch == '显示答案' && this.data.switchTriangle == '../../../static/images/choose-triangle-dark.png') {
       this.setData({
         answerSwitch: '隐藏答案',
@@ -1029,28 +1040,28 @@ Page({
     }
   },
   /* 文本框聚焦时更改状态*/
-  focus1: function (e) {
+  focus1: function(e) {
     this.setData({
       status1: 1
     })
   },
-  focus2: function (e) {
+  focus2: function(e) {
     this.setData({
       status2: 1
     })
   },
-  focus3: function (e) {
+  focus3: function(e) {
     this.setData({
       status3: 1
     })
   },
   /* 文本框失焦时更改状态*/
-  blur1: function (e) {
+  blur1: function(e) {
     this.setData({
       status1: 0
     })
   },
-  blur2: function (e) {
+  blur2: function(e) {
     this.setData({
       status2: 0
     })
@@ -1064,7 +1075,7 @@ Page({
       })
     }
   },
-  blur3: function (e) {
+  blur3: function(e) {
     this.setData({
       status3: 0
     })
@@ -1079,7 +1090,7 @@ Page({
     }
   },
   /* 获取输入的题目标题*/
-  titleChange: function (e) {
+  titleChange: function(e) {
     let that = this;
     if (e.detail.value.length < 1) {
       that.setData({
@@ -1099,42 +1110,62 @@ Page({
     })
   },
   /* 上传题目照片*/
-  chooseImage(e) {
+  qImageUploadTap(e) {
+    var that = this;
     wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
-      sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-        that.setData({
-          image: tempFilePaths
-        })
-      }
-    }),
-      /* 测试传图片显示*/
-      this.setData({
-        // questionImages: '{../../../static/images/question-image.png}',
-        questionImage: '../../../static/images/question-image.png',
-        questionImageHidden: false
+      count: 1 - that.data.qImageUploaderNum,
+        sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
+        sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
+        success: function(res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths;
+          let qImageUploaderList = that.data.qImageUploaderList.concat(tempFilePaths);
+          if (qImageUploaderList.length == 1) {
+            that.setData({
+              qImageShowUpload: false
+            })
+          }
+          that.setData({
+            questionImageHidden: false,
+            qImageUploaderList: qImageUploaderList,
+            qImageUploaderNum: qImageUploaderList.length,
+            questionImage: qImageUploaderList
+          })
+          console.log(qImageUploaderList);
+        }
       })
   },
-  /* 点击题目图片预览*/
-  questionImagePreview: function (e) {
+  // 删除题目图片
+  qClearImg: function (e) {
+    var nowList = [];//新数据
+    var qImageUploaderList = this.data.qImageUploaderList;//原数据
+
+    for (let i = 0; i < qImageUploaderList.length; i++) {
+      if (i == e.currentTarget.dataset.index) {
+        continue;
+      } else {
+        nowList.push(qImageUploaderList[i])
+      }
+    }
+    this.setData({
+      questionImageHidden: true,
+      qImgeUploaderNum: this.data.qImageUploaderNum - 1,
+      qImageUploaderList: nowList,
+      qImageShowUpload: true,
+      // questionImage: ''
+    })
+  },
+  //展示图片
+  qShowImg: function (e) {
     var that = this;
-    var src = that.data.questionImage;//获取data-src
-    var imgList = [that.data.questionImage];//获取data-list
-    //图片预览
     wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: imgList // 需要预览的图片http链接列表
+      urls: that.data.qImageUploaderList,
+      current: that.data.qImageUploaderList[e.currentTarget.dataset.index]
     })
   },
 
-
-
   /* 点击“请输入错题文字内容”后显示输入面板*/
-  inputQuestionText: function (e) {
+  inputQuestionText: function(e) {
     this.setData({
       questionTextHidden: false,
       status2: 1,
@@ -1142,7 +1173,7 @@ Page({
     })
   },
 
-  changeQuestionText: function (e) {
+  changeQuestionText: function(e) {
     let that = this;
     if (e.detail.value.length < 1) {
       that.setData({
@@ -1155,7 +1186,7 @@ Page({
     }
   },
   /* 点击“请输入答案”后显示输入面板*/
-  inputAnswerText: function (e) {
+  inputAnswerText: function(e) {
     this.setData({
       answerTextHidden: false,
       status3: 1,
@@ -1163,7 +1194,7 @@ Page({
     })
   },
 
-  changeAnswerText: function (e) {
+  changeAnswerText: function(e) {
     let that = this;
     if (e.detail.value.length < 1) {
       that.setData({
@@ -1177,40 +1208,65 @@ Page({
   },
 
   /* 上传答案照片*/
-  chooseAnswerImage(e) {
+  aImageUploadTap(e) {
+    var that = this;
     wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
-      sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
-      success: function (res) {
-        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        var tempFilePaths = res.tempFilePaths
-        that.setData({
-          image: tempFilePaths,
-        })
-      }
-    }),
-      /* 测试传图片显示*/
-      this.setData({
-        answerImage: '../../../static/images/answer-image.png',
-        answerImageHidden: false,
-        answerImageP: '../../../static/images/answer-image.png'
+        count: 1,
+        sizeType: ['original', 'compressed'], //可选择原图或压缩后的图片
+        sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
+        success: function(res) {
+          // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+          var tempFilePaths = res.tempFilePaths;
+          let aImageUploaderList = that.data.aImageUploaderList.concat(tempFilePaths);
+          if (aImageUploaderList.length == 1) {
+            that.setData({
+              aImageShowUpload: false
+            })
+          }
+          that.setData({
+            // answerImagePHidden: false,
+            aImageUploaderList: aImageUploaderList,
+            aImageUploaderNum: aImageUploaderList.length,
+            answerImageP: aImageUploaderList,
+            answerImageHas: true,
+          })
+        }
       })
   },
-  /* 点击答案图片预览*/
-  answerImagePreview: function (e) {
+  // 删除答案图片
+  aClearImg: function (e) {
+    var nowList = [];//新数据
+    var aImageUploaderList = this.data.aImageUploaderList;//原数据
+
+    for (let i = 0; i < aImageUploaderList.length; i++) {
+      if (i == e.currentTarget.dataset.index) {
+        continue;
+      } else {
+        nowList.push(aImageUploaderList[i])
+      }
+    }
+    this.setData({
+      // answerImagePHidden: true,
+      aImgeUploaderNum: this.data.aImageUploaderNum - 1,
+      aImageUploaderList: nowList,
+      aImageShowUpload: true,
+      answerImageHas: false,
+      answerImagePHidden: true,
+      answerSwitch: '显示答案',
+      switchTriangle: '../../../static/images/choose-triangle-dark.png',
+    })
+  },
+  //展示图片
+  aShowImg: function (e) {
     var that = this;
-    var src = that.data.answerImage;//获取data-src
-    var imgList = [that.data.answerImage];//获取data-list
-    //图片预览
     wx.previewImage({
-      current: src, // 当前显示图片的http链接
-      urls: imgList // 需要预览的图片http链接列表
+      urls: that.data.aImageUploaderList,
+      current: that.data.aImageUploaderList[e.currentTarget.dataset.index]
     })
   },
 
   /*选择科目弹窗控制*/
-  onShow: function () {
+  onShow: function() {
     this.setData({
       selectSubjectDialogShow: false,
       addTimeDialogShow: false,
@@ -1228,7 +1284,7 @@ Page({
       selectSubjectDialogShow: true,
     })
   },
-  changeSubject: function (e) {
+  changeSubject: function(e) {
     this.setData({
       subject: this.data.subjectN,
       selectSubjectDialogShow: false,
@@ -1238,7 +1294,7 @@ Page({
   /**
    * 跳转到编辑科目页面
    */
-  editSubjects: function () {
+  editSubjects: function() {
     wx.navigateTo({
       url: '../editSubject/editSubject',
     })
@@ -1263,36 +1319,380 @@ Page({
     })
   },
   //给点击的日期设置一个背景颜色
-  dayClick: function (event) {
+  dClick: function(event) {
     console.log(event)
     var date = new Date();
     var todayDate = new Date(date.getTime());
+    var fourDate = new Date(date.getTime() + 4 * 24 * 60 * 60 * 1000);
+    var fifteenDate = new Date(date.getTime() + 15 * 24 * 60 * 60 * 1000);
     var tY = todayDate.getFullYear();
     var tM = todayDate.getMonth() + 1;
     var tD = todayDate.getDate();
+    var fourY = fourDate.getFullYear();
+    var fourM = fourDate.getMonth() + 1;
+    var fourD = fourDate.getDate();
+    var fifteenY = fifteenDate.getFullYear();
+    var fifteenM = fifteenDate.getMonth() + 1;
+    var fifteenD = fifteenDate.getDate();
     let clickDay = event.detail.day;
     let clickMonth = event.detail.month;
     let clickYear = event.detail.year;
     let changeDay = `dayStyle[0].day`;
     let changeBg = `dayStyle[0].background`;
     let changeColor = 'dayStyle[0].color';
+    let changeTBg = 'dayStyle[1].background';
+    let changeTColor = 'dayStyle[1].color';
+    let changeFourBg = 'dayStyle[2].background';
+    let changeFourColor = 'dayStyle[2].color';
+    let changeFifteenBg = 'dayStyle[3].background';
+    let changeFifteenColor = 'dayStyle[3].color';
+
     if ((clickDay > tD && clickMonth == tM && clickYear == tY) || clickMonth > tM || clickYear > tY) {
-      this.setData({
-        [changeDay]: clickDay,
-        [changeBg]: "#1AA85C",
-        [changeColor]: "white",
-        clickY: clickYear,
-        clickM: clickMonth,
-        clickD: clickDay
-      });
-      console.log(changeBg),
-        console.log(this.data.dayStyle[0].background),
-        console.log(this.data.dayStyle[3].background)
+      if (tY == fourY && tY == fifteenY && tM == fourM && tM == fifteenM) {
+        if (clickMonth == tM) {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+        } else {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+        }
+
+      } else if (tY == fourY && tY == fifteenY && tM == fourM && fourM != fifteenM) {
+        if (clickMonth == tM) {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+        } else if (clickMonth == fifteenM) {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+        } else {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+        }
+      } else if (tY == fourY && tY == fifteenY && tM != fourM && fourM == fifteenM) {
+        if (clickMonth == tM) {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#7F2FF0",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+        } else if (clickMonth == fourM) {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "#4A81F8",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "#F6B933",
+              [changeFifteenColor]: "white"
+            })
+          }
+        } else {
+          if (tD == clickDay) {
+            this.setData({
+              [changeTBg]: "#1AA85C",
+              [changeTColor]: "white",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fourD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "#1AA85C",
+              [changeFourColor]: "white",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+          if (fifteenD == clickDay) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "#1AA85C",
+              [changeFifteenColor]: "white"
+            })
+          } else if (clickDay != tD && clickDay != fourD && clickDay != fifteenD) {
+            this.setData({
+              [changeTBg]: "white",
+              [changeTColor]: "#464646",
+              [changeFourBg]: "white",
+              [changeFourColor]: "#464646",
+              [changeFifteenBg]: "white",
+              [changeFifteenColor]: "#464646"
+            })
+          }
+        }
+      }
     }
+    this.setData({
+      [changeDay]: clickDay,
+      [changeBg]: "#1AA85C",
+      [changeColor]: "white",
+      clickY: clickYear,
+      clickM: clickMonth,
+      clickD: clickDay
+    });
+    console.log(fourM);
+    console.log(fifteenM);
+    console.log(tM);
+    console.log(this.data.clickD)
   },
   /* 点击富文本编辑样式按钮时时更改状态*/
   /* 显示遮罩层*/
-  showBgSetting: function (e) {
+  showBgSetting: function(e) {
     this.setData({
       status4: 1,
       bgChoose: true,
@@ -1304,7 +1704,7 @@ Page({
       this.chooseSezi()
     }
   },
-  showFontSetting: function (e) {
+  showFontSetting: function(e) {
     this.setData({
       status4: 1,
       bgChoose: false,
@@ -1316,7 +1716,7 @@ Page({
       this.chooseSezi()
     }
   },
-  showAlignSetting: function (e) {
+  showAlignSetting: function(e) {
     this.setData({
       status4: 1,
       bgChoose: false,
@@ -1328,7 +1728,7 @@ Page({
       this.chooseSezi()
     }
   },
-  showColorSetting: function (e) {
+  showColorSetting: function(e) {
     this.setData({
       status4: 1,
       bgChoose: false,
@@ -1341,7 +1741,7 @@ Page({
     }
   },
   // 动画函数
-  chooseSezi: function (e) {
+  chooseSezi: function(e) {
     // 用that取代this，防止不必要的情况发生
     var that = this;
     // 创建一个动画实例
@@ -1363,7 +1763,7 @@ Page({
       chooseSize: true
     })
     // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动 滑动时间
-    setTimeout(function () {
+    setTimeout(function() {
       animation.translateY(0).step()
       that.setData({
         animationData: animation.export(),
@@ -1372,7 +1772,7 @@ Page({
     }, 100)
   },
   // 隐藏
-  hideModal: function (e) {
+  hideModal: function(e) {
     var that = this;
     var animation = wx.createAnimation({
       duration: 500,
@@ -1383,7 +1783,7 @@ Page({
     that.setData({
       animationData: animation.export()
     })
-    setTimeout(function () {
+    setTimeout(function() {
       animation.translateY(0).step()
       that.setData({
         animationData: animation.export(),
@@ -1395,7 +1795,7 @@ Page({
     })
   },
   /* 富文本设置背景模式切换 */
-  bgColorChooseTap: function (e) {
+  bgColorChooseTap: function(e) {
     this.setData({
       characterChoose: false,
       noBgColorChoose: false,
@@ -1403,7 +1803,7 @@ Page({
       bgColorChoose: true
     })
   },
-  characterChooseTap: function (e) {
+  characterChooseTap: function(e) {
     this.setData({
       characterChoose: true,
       noBgColorChoose: true,
@@ -1412,7 +1812,7 @@ Page({
     })
   },
   /* 带卡通人物背景模式下选择背景 */
-  click: function (e) {
+  click: function(e) {
     var id = e.currentTarget.dataset.id
     var that = this
     that.setData({
@@ -1458,7 +1858,7 @@ Page({
     }
   },
   /* 不带卡通人物背景模式下选择背景 */
-  click2: function (e) {
+  click2: function(e) {
     var id = e.currentTarget.dataset.id
     var that = this
     that.setData({
@@ -1548,7 +1948,7 @@ Page({
     }
   },
   /* 选择字号 */
-  click3: function (e) {
+  click3: function(e) {
     var id = e.currentTarget.dataset.id
     var that = this
     that.setData({
@@ -1631,7 +2031,7 @@ Page({
     }
   },
   /* 选择对齐方式 */
-  click4: function (e) {
+  click4: function(e) {
     var id = e.currentTarget.dataset.id
     var that = this
     that.setData({
@@ -1652,7 +2052,7 @@ Page({
     }
   },
   /* 选择对齐方式 */
-  click5: function (e) {
+  click5: function(e) {
     var id = e.currentTarget.dataset.id
     var that = this
     that.setData({

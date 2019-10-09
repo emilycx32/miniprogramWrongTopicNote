@@ -9,16 +9,16 @@
         <view class="content" style="width: 100%">
           <view class="preview-title" style="font-size: 14px; margin: 14px 0; color: {{fontColor}}; font-weight: 700">{{title}}</view>
           <view class="question-wrap" style="width: 100%; {{questionTextTemp=='' && questionImage=='' ? 'border-bottom: 0px solid rgba(0, 0, 0, 0)' : 'border-bottom: 1px solid rgba(0, 0, 0, 0.05)'}} ">
-            <image src="{{questionImage}}" style="width: 100%" hidden="{{questionImageHidden}}" bindtap="questionImagePreview"></image>
+            <image src="{{questionImage}}" style="width: 100%" hidden="{{questionImageHidden}}" mode="widthFix"></image>
             <view class="{{question-text}}" style="font-size: {{fontSize}}; color: {{fontColor}}; margin: 10px 0; width: 100%; line-height: {{lineHight}}; text-align: {{textAlign}}; word-break:break-all">{{questionText}}</view>
           </view>
           <view class="wrong-topic-notes-preview-answer" style="width: 100%; {{answerTextTemp=='' && answerImage=='' ? 'border-bottom: 0px solid rgba(0, 0, 0, 0)' : 'border-bottom: 1px solid rgba(0, 0, 0, 0.05)'}}">
-            <view class="answer-switch" style="display: flex; align-items: center; {{answerTextTemp=='' && answerImage=='' ? 'display: none' : 'display: flex'}}" bindtap="answerSwitchTap">
+            <view class="answer-switch" style="display: flex; align-items: center; {{answerTextTemp=='' && answerImageHas==false ? 'display: none' : 'display: flex'}}" bindtap="answerSwitchTap">
               <image src="{{lightImage}}" style="width: 15px; height: 19px;margin-right: 8px"></image>
               <view style="font-size: 12px; color: {{fontColor}}; font-weight: 700; margin: 10px 0; margin-right: 5px">{{answerSwitch}}</view>
               <image src="{{switchTriangle}}" style="width: 8px; height: 4px"></image>
             </view>
-            <image src="{{answerImageP}}" style="width: 100%" hidden="{{answerImagePHidden}}" bindtap="answerImagePreview"></image>
+            <image src="{{answerImageP}}" style="width: 100%" hidden="{{answerImagePHidden}}" mode="widthFix"></image>
             <view class="{{answer-text}}" hidden="{{answerTestHidden}}" style="font-size: {{fontSize}}; color: {{fontColor}}; margin: 10px 0; width: 100%; line-height: {{lineHight}}; text-align: {{textAlign}}; word-break:break-all">{{answerText}}</view>
           </view>
           <view class="info" style="display: flex; justify-content: space-between; margin: 10px 0 14px 0">
@@ -59,17 +59,12 @@
         <view class="content-input input {{status2==0 ? 'noactive-border':'active-border'}}">
           <view style="display: flex; justify-content: space-between; align-items: center; width: 100%">
             <view class="content-txt" bindtap="inputQuestionText">请输入错题文字内容</view>
-            <image style="width: 40px; height: 40px; margin-right: -6px" src="../../../static/images/camera.png" bindtap="chooseImage"></image>
+            <image wx:if="{{qImageShowUpload}}" style="width: 40px; height: 40px; margin-right: -6px" src="../../../static/images/camera.png" bindtap="qImageUploadTap"></image>
           </view>
-          <view class="question-image-upload" hidden="{{questionImageHidden}}">
-            <view class="q-image-upload-wrap">
-              <!-- 图片缩略图  -->
-              <!-- <block wx:if="{{questionImageHidden == false}}" wx:for="{{questionImages}}" wx:key="{{item.id}}" -->
-              <!-- <view class="uploader__file" bindlongpress="deleteQuestionImage" data-index="{{index}}"> -->
-              <!-- <image class="uploader__img" src="{{item.path}}" style="width: 100%"/> -->
-              <!-- </view> -->
-              <!-- </block> -->
-              <image class="q-image" src="{{questionImage}}" bindtap="handleQuestionImagePreview" style="width: 100%"></image>
+          <view class="question-image-upload">
+            <view class="q-image-upload-item" wx:for="{{qImageUploaderList}}" wx:key="{{index}}">
+              <icon class='q_uploader_item_icon' bindtap='qClearImg' data-index="{{index}}" type="clear" size="20" color="#464646"/>
+              <image class="q-image" data-index="{{index}}" src='{{item}}' style="width: 100%" mode="widthFix" bindtap="qShowImg"></image>
             </view>
           </view>
           <view class="question-content-text-input">
@@ -84,12 +79,13 @@
         <view class="content-input input {{status3==0 ? 'noactive-border':'active-border'}}">
           <view style="display: flex; justify-content: space-between; align-items: center; width: 100%">
             <view class="content-txt" bindtap="inputAnswerText">请输入答案</view>
-            <image style="width: 40px; height: 40px; margin-right: -6px" src="../../../static/images/camera.png" bindtap="chooseAnswerImage"></image>
+            <image wx:if="{{aImageShowUpload}}" style="width: 40px; height: 40px; margin-right: -6px" src="../../../static/images/camera.png" bindtap="aImageUploadTap"></image>
           </view>
-          <view class="answer-image-upload" hidden="{{answerImageHidden}}">
-            <view class="a-image-upload-wrap">
+          <view class="answer-image-upload">
+            <view class="a-image-upload-item" wx:for="{{aImageUploaderList}}" wx:key="{{index}}">
+              <icon class='a_uploader_item_icon' bindtap='aClearImg' data-index="{{index}}" type="clear" size="20" color="#464646"/>
               <!-- 图片缩略图  -->
-              <image class="a-image" src="{{answerImage}}" bindtap="handleAnswerImagePreview" style="width: 100%"></image>
+              <image class="a-image" data-index="{{index}}" src='{{item}}' style="width: 100%" mode="widthFix" bindtap="aShowImg"></image>
             </view>
           </view>
           <view class="answer-content-text-input">
@@ -130,7 +126,7 @@
           <view class="calendar-this-date-wrap">{{thisMonth}}月{{thisDate}}日 | {{toDay}}</view>
         </view>
         <view class="calendar-current-date-wrap"></view>
-        <calendar binddayClick="dayClick" weeks-type="cn" days-color="{{dayStyle}}" cell-size="40" board-style="calendar-weeks" header-style="calendar-header" bindnextMonth="next" bindprevMonth="prev" />
+        <calendar binddayClick="dClick" weeks-type="cn" days-color="{{dayStyle}}" cell-size="40" board-style="calendar-weeks" header-style="calendar-header" bindnextMonth="next" bindprevMonth="prev" />
       </add-time-dialog>
     </view>
     <view class="main-right"></view>
