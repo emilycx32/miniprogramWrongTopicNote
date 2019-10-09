@@ -17,7 +17,6 @@ Page({
     switchTriangle: '../../../static/images/choose-triangle-dark.png',
     title: '这里是标题',
     lastArea: '15',
-    // questionImages: '{}',
     questionImage: '',
     questionText: '',
     answerImage: '',
@@ -115,63 +114,63 @@ Page({
         value: '../../../static/images/illustrator001.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator002',
         value: '../../../static/images/illustrator002.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator003',
         value: '../../../static/images/illustrator003.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator004',
         value: '../../../static/images/illustrator004.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator005',
         value: '../../../static/images/illustrator005.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator006',
         value: '../../../static/images/illustrator006.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator007',
         value: '../../../static/images/illustrator007.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator008',
         value: '../../../static/images/illustrator008.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator009',
         value: '../../../static/images/illustrator009.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator010',
         value: '../../../static/images/illustrator010.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator011',
         value: '../../../static/images/illustrator011.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator012',
         value: '../../../static/images/illustrator012.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator013',
         value: '../../../static/images/illustrator013.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator014',
         value: '../../../static/images/illustrator014.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator015',
         value: '../../../static/images/illustrator015.png'
       },
       {
-        name: 'illustrator001',
+        name: 'illustrator016',
         value: '../../../static/images/illustrator016.png'
       },
     ],
@@ -1013,16 +1012,24 @@ Page({
       this.setData({
         answerSwitch: '隐藏答案',
         switchTriangle: '../../../static/images/choose-triangle-dark-180.png',
-        answerImagePHidden: false,
         answerTestHidden: false,
       })
+      if (this.data.answerImageHas == true) {
+        this.setData({
+          answerImagePHidden: false,
+        })
+      }
     } else if (this.data.answerSwitch == '显示答案' && this.data.switchTriangle == '../../../static/images/choose-triangle-light.png') {
       this.setData({
         answerSwitch: '隐藏答案',
-        switchTriangle: '../../../static/images/choose-triangle-light-180.png',
-        answerImagePHidden: false,
+        switchTriangle: '../../../static/images/choose-triangle-light-180.png', 
         answerTestHidden: false
       })
+      if (this.data.answerImageHas == true) {
+        this.setData({
+          answerImagePHidden: false,
+        })
+      }
     } else if (this.data.answerSwitch == '隐藏答案' && this.data.switchTriangle == '../../../static/images/choose-triangle-light-180.png') {
       this.setData({
         answerSwitch: '显示答案',
@@ -1038,6 +1045,7 @@ Page({
         answerTestHidden: true,
       })
     }
+    // console.log(this.data.answerImageHas)
   },
   /* 文本框聚焦时更改状态*/
   focus1: function(e) {
@@ -1152,7 +1160,6 @@ Page({
       qImgeUploaderNum: this.data.qImageUploaderNum - 1,
       qImageUploaderList: nowList,
       qImageShowUpload: true,
-      // questionImage: ''
     })
   },
   //展示图片
@@ -1224,7 +1231,7 @@ Page({
             })
           }
           that.setData({
-            // answerImagePHidden: false,
+            answerImagePHidden: false,
             aImageUploaderList: aImageUploaderList,
             aImageUploaderNum: aImageUploaderList.length,
             answerImageP: aImageUploaderList,
@@ -1246,7 +1253,6 @@ Page({
       }
     }
     this.setData({
-      // answerImagePHidden: true,
       aImgeUploaderNum: this.data.aImageUploaderNum - 1,
       aImageUploaderList: nowList,
       aImageShowUpload: true,
@@ -1828,7 +1834,7 @@ Page({
     } else if (that.data.id == 1) {
       that.setData({
         src: '../../../static/images/illustrator002.png',
-        previewBg: '#EAFAF6',
+        previewBg: '#D3E7E2',
         previewBgBorder: '',
       })
     } else if (that.data.id == 2) {
@@ -1849,13 +1855,73 @@ Page({
         previewBg: '#EBF6FC',
         previewBgBorder: '',
       })
+    } else if (that.data.id == 5) {
+      that.setData({
+        src: '../../../static/images/illustrator006.png',
+        previewBg: '#D0E3E4',
+        previewBgBorder: '',
+      })
+    } else if (that.data.id == 6) {
+      that.setData({
+        src: '../../../static/images/illustrator007.png',
+        previewBg: '#D5E8E4',
+        previewBgBorder: '',
+      })
+    } else if (that.data.id == 7) {
+      that.setData({
+        src: '../../../static/images/illustrator008.png',
+        previewBg: '#F9EAEF',
+        previewBgBorder: '',
+      })
     } else if (that.data.id == 8) {
       that.setData({
         src: '../../../static/images/illustrator009.png',
         previewBg: 'white',
         previewBgBorder: '2px solid #9377A8',
       })
-    }
+    } else if (that.data.id == 9) {
+      that.setData({
+        src: '../../../static/images/illustrator010.png',
+        previewBg: 'white',
+        previewBgBorder: '2px solid #9306B0',
+      })
+    } else if (that.data.id == 10) {
+      that.setData({
+        src: '../../../static/images/illustrator011.png',
+        previewBg: '#E3E4F3',
+        previewBgBorder: '',
+      })
+    } else if (that.data.id == 11) {
+      that.setData({
+        src: '../../../static/images/illustrator012.png',
+        previewBg: '#FFF4F2',
+        previewBgBorder: '',
+      })
+    } else if (that.data.id == 12) {
+      that.setData({
+        src: '../../../static/images/illustrator013.png',
+        previewBg: '#EAFAFF',
+        previewBgBorder: '',
+      })
+    } else if (that.data.id == 13) {
+      that.setData({
+        src: '../../../static/images/illustrator014.png',
+        previewBg: '#E2E7EF',
+        previewBgBorder: '',
+      })
+    } else if (that.data.id == 14) {
+      that.setData({
+        src: '../../../static/images/illustrator015.png',
+        previewBg: '#F7F0DA',
+        previewBgBorder: '',
+      })
+    } else if (that.data.id == 15) {
+      that.setData({
+        src: '../../../static/images/illustrator016.png',
+        previewBg: '#F6E4EA',
+        previewBgBorder: '',
+      })
+    } 
   },
   /* 不带卡通人物背景模式下选择背景 */
   click2: function(e) {
