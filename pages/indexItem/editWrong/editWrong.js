@@ -43,6 +43,10 @@ Page({
     answerTextTemp: '',
     isFocus: false,
     isFocus2: false,
+    isShowQuestionText: false,
+    questionTextValue: '',
+    isShowAnswerText: false,
+    answerTextValue: '',
     subjectChoose: '请选择',
     selectSubjectDialogShow: false,
     selectSubjectButtons: [],
@@ -1045,7 +1049,6 @@ Page({
         answerTestHidden: true,
       })
     }
-    // console.log(this.data.answerImageHas)
   },
   /* 文本框聚焦时更改状态*/
   focus1: function(e) {
@@ -1079,7 +1082,9 @@ Page({
       })
     } else {
       this.setData({
-        questionTextTemp: e.detail.value
+        isShowQuestionText: true,
+        questionTextTemp: e.detail.value,
+        questionTextValue: e.detail.value
       })
     }
   },
@@ -1093,7 +1098,9 @@ Page({
       })
     } else {
       this.setData({
-        answerTextTemp: e.detail.value
+        isShowAnswerText: true,
+        answerTextTemp: e.detail.value,
+        answerTextValue: e.detail.value
       })
     }
   },
@@ -1192,6 +1199,13 @@ Page({
       })
     }
   },
+
+  onShowQuestionTextarea() {       //显示textarea
+    this.setData({
+      isShowQuestionText: false,
+      isFocus: true
+    })
+  },
   /* 点击“请输入答案”后显示输入面板*/
   inputAnswerText: function(e) {
     this.setData({
@@ -1212,6 +1226,12 @@ Page({
         answerText: e.detail.value,
       })
     }
+  },
+  onShowAnswerTextarea() {       //显示textarea
+    this.setData({
+      isShowAnswerText: false,
+      isFocus2: true
+    })
   },
 
   /* 上传答案照片*/
@@ -1840,7 +1860,7 @@ Page({
     } else if (that.data.id == 2) {
       that.setData({
         src: '../../../static/images/illustrator003.png',
-        previewBg: '#FFFCF4',
+        previewBg: '#FFF8E4',
         previewBgBorder: '',
       })
     } else if (that.data.id == 3) {

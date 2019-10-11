@@ -68,8 +68,9 @@
             </view>
           </view>
           <view class="question-content-text-input">
-            <textarea placeholder="" focus="{{isFocus}}" auto-height maxlength="800" style="line-height:44rpx; color: #464646; padding-bottom: 8px; {{status2==0 && questionTextTemp=='' ? 'display: none' : 'display: block'}}" bindblur="blur2" bindfocus="focus2" bindinput="changeQuestionText"
+            <textarea wx:if="{{!isShowQuestionText}}" focus="{{isFocus}}" auto-height maxlength="800" value="{{questionTextValue}}" style="z-index: 0;line-height:44rpx; color: #464646; padding-bottom: 8px; {{status2==0 && questionTextTemp=='' ? 'display: none' : 'display: block'}}" bindblur="blur2" bindfocus="focus2" bindinput="changeQuestionText"
             />
+            <view wx:else style="z-index: 0;line-height:44rpx; color: #464646; padding-bottom: 8px; word-break:break-all" bindtap="onShowQuestionTextarea">{{questionTextValue}}</view>
           </view>
         </view>
       </view>
@@ -89,8 +90,9 @@
             </view>
           </view>
           <view class="answer-content-text-input">
-            <textarea placeholder="" focus="{{isFocus2}}" auto-height maxlength="800" style="line-height:44rpx; color: #464646; padding-bottom: 8px; {{status3==0 && answerTextTemp=='' ? 'display: none' : 'display: block'}}" bindblur="blur3" bindfocus="focus3" bindinput="changeAnswerText"
+            <textarea wx:if="{{!isShowAnswerText}}" focus="{{isFocus2}}" auto-height maxlength="800" value="{{answerTextValue}}" style="z-index: 0;line-height:44rpx; color: #464646; padding-bottom: 8px; {{status3==0 && answerTextTemp=='' ? 'display: none' : 'display: block'}}" bindblur="blur3" bindfocus="focus3" bindinput="changeAnswerText"
             />
+            <view wx:else style="z-index: 0;line-height:44rpx; color: #464646; padding-bottom: 8px; word-break:break-all" bindtap="onShowAnswerTextarea">{{answerTextValue}}</view>
           </view>
         </view>
       </view>

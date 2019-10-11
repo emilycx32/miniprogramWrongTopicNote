@@ -107,11 +107,11 @@
 }
 .q_uploader_item_icon, .a_uploader_item_icon{
   position: absolute;
-  z-index: 5;
+  z-index: 4;
   margin-top: -15px;
 }
 .q-image, .a-image{
-  z-index: 4;
+  z-index: 3;
 }
 .content-txt{
   color: #9b9b9b;
@@ -203,7 +203,7 @@
   display: flex;
   width: 100%;
   position: fixed;
-  z-index: 2;
+  z-index: 999;
   border-top: 0.5px solid #EDEDED;
   background-color: white;
 }
