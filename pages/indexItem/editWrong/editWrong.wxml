@@ -63,7 +63,7 @@
           </view>
           <view class="question-image-upload">
             <view class="q-image-upload-item" wx:for="{{qImageUploaderList}}" wx:key="{{index}}">
-              <icon class='q_uploader_item_icon' bindtap='qClearImg' data-index="{{index}}" type="clear" size="20" color="#464646"/>
+              <image class='q_uploader_item_icon' bindtap='qClearImg' data-index="{{index}}" src="../../../static/images/delete-icon.png"></image>
               <image class="q-image" data-index="{{index}}" src='{{item}}' style="width: 100%" mode="widthFix" bindtap="qShowImg"></image>
             </view>
           </view>
@@ -84,7 +84,7 @@
           </view>
           <view class="answer-image-upload">
             <view class="a-image-upload-item" wx:for="{{aImageUploaderList}}" wx:key="{{index}}">
-              <icon class='a_uploader_item_icon' bindtap='aClearImg' data-index="{{index}}" type="clear" size="20" color="#464646"/>
+              <image class='a_uploader_item_icon' bindtap='aClearImg' data-index="{{index}}" src="../../../static/images/delete-icon.png"></image>
               <!-- 图片缩略图  -->
               <image class="a-image" data-index="{{index}}" src='{{item}}' style="width: 100%" mode="widthFix" bindtap="aShowImg"></image>
             </view>
